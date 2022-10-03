@@ -8,13 +8,14 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-item>
+  <ion-item lines="none"> 
     <ion-label position="floating">Operação : </ion-label>
-    <ion-input  placeholder="Escreva o valor 1" [(ngModel)]="valor1"></ion-input>
+    <ion-input class="ion-text-right"  placeholder="Escreva o valor 1" [(ngModel)]="operacao"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label >Resultado : </ion-label>
+  <ion-item lines="none">
+    <ion-label slot="start"> <strong> Resultado :  </strong></ion-label>
+    <ion-label class="ion-text-right Resultado" >{{resultado}}</ion-label>
   </ion-item>
   <ion-grid size="100xs">
 <!------------------Primeira Linha ------------------------------>
@@ -22,33 +23,44 @@
      
       <ion-item lines="full" class="item-has-focus ion-touched">
       <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">MC</h6></ion-label>
+        <ion-item lines="none">
+
+         <ion-button slot="start" > <ion-label><h6 style="font-size: 10px">MC</h6></ion-label> </ion-button> 
+
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">MR</h6></ion-label>
+        <ion-item  lines="none">
+
+       <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">MR</h6></ion-label> </ion-button> 
+
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">M+</h6></ion-label>
+        <ion-item  lines="none">
+
+          <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">M+</h6></ion-label> </ion-button> 
+
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">M-</h6></ion-label>
+        <ion-item lines="none">
+
+          <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">M-</h6></ion-label> </ion-button> 
+        </ion-item>  
+      </ion-col>
+      <ion-col size="2"> 
+        <ion-item lines="none">
+
+          <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">MS</h6></ion-label> </ion-button> 
+
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">MS</h6></ion-label>
-        </ion-item>
-      </ion-col>
-      <ion-col size="2"> 
-        <ion-item button lines="none">
-          <ion-label><h6 style="font-size: 10px">Mª</h6></ion-label>
+        <ion-item lines="none">
+
+          <ion-button slot="start"> <ion-label> <h6 style="font-size: 10px">Mª</h6> </ion-label> </ion-button> 
+
         </ion-item>
       </ion-col>
       
@@ -61,22 +73,22 @@
     <ion-row size="15xs">
 
       <ion-col size="3" class="ion-align-self-center" > 
-        <ion-item button lines="none" >
+        <ion-item button lines="none"   (click)="adicionarValor('%')" >
           <h3>%</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3" > 
-        <ion-item button lines="none">
+        <ion-item button lines="none" (click)="limparOperacao()">
           <h3>CE</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none" (click)="limparMemoria()">
           <h3>C</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none" (click)="apagarCaracter()">
           <h3>(X)</h3>
         </ion-item>
       </ion-col>
@@ -88,22 +100,22 @@
     <ion-row size="15xs">
 
       <ion-col size="3"> 
-        <ion-item button lines="none" >
+        <ion-item button lines="none"  (click)="adicionarValor('¹/x')"  >
           <h3>¹/x</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('x²')" >
           <h3>x²</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('²/x')" >
           <h3>²/x</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none" (click)="adicionarMatematica('/')">
           <h3>/</h3>
         </ion-item>
       </ion-col>
@@ -113,22 +125,22 @@
     <ion-row size="15xs"> 
       
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('7')" >
           <h3>7</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('8')" >
           <h3>8</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('9')" >
           <h3>9</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none" (click)="adicionarMatematica('*')">
           <h3>*</h3>
         </ion-item>
       </ion-col>
@@ -138,22 +150,22 @@
     <ion-row size="15xs">
       
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('4')" >
           <h3>4</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('5')" >
           <h3>5</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('6')" >
           <h3>6</h3>
         </ion-item>
       </ion-col>
-      <ion-col size="3"> 
-        <ion-item button lines="none">
+      <ion-col size="3" > 
+        <ion-item button lines="none" (click)="adicionarMatematica('-')">
           <h3>-</h3>
         </ion-item>
       </ion-col>
@@ -163,22 +175,23 @@
     <ion-row size="15xs">
       
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('1')" >
           <h3>1</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('2')" >
           <h3>2</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('3')" >
           <h3>3</h3>
         </ion-item>
       </ion-col>
-      <ion-col size="3"> 
-        <ion-item button lines="none">
+      
+      <ion-col size="3" > 
+        <ion-item button lines="none" (click)="adicionarMatematica('+')" >
           <h3>+</h3>
         </ion-item>
       </ion-col>
@@ -188,24 +201,27 @@
     <ion-row size="15xs">
       
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('+/-')" >
           <h3>+/-</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('0')" >
           <h3>0</h3>
         </ion-item>
       </ion-col>
       <ion-col size="3"> 
-        <ion-item button lines="none">
+        <ion-item button lines="none"  (click)="adicionarValor('.')" >
           <h3>,</h3>
         </ion-item>
       </ion-col>
+
       <ion-col size="3"> 
-        <ion-item button color="primary" lines="none">
+
+        <ion-item button color="primary" lines="none" (click)="adicionarMatematica('=')">
           <h3>=</h3>
         </ion-item>
+
       </ion-col>
 
     </ion-row>
