@@ -25,28 +25,28 @@
       <ion-col size="2"> 
         <ion-item lines="none">
 
-         <ion-button slot="start" > <ion-label><h6 style="font-size: 10px">MC</h6></ion-label> </ion-button> 
+         <ion-button slot="start"  (click)="limparMemoriaM()"> <ion-label><h6 style="font-size: 10px">MC</h6></ion-label> </ion-button> 
 
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
         <ion-item  lines="none">
 
-       <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">MR</h6></ion-label> </ion-button> 
+       <ion-button slot="start" (click)="mostrarMemoria()"> <ion-label><h6 style="font-size: 10px">MR</h6></ion-label> </ion-button> 
 
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
         <ion-item  lines="none">
 
-          <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">M+</h6></ion-label> </ion-button> 
+          <ion-button slot="start" (click)="somaNamemoria()"> <ion-label><h6 style="font-size: 10px">M+</h6></ion-label> </ion-button> 
 
         </ion-item>
       </ion-col>
       <ion-col size="2"> 
         <ion-item lines="none">
 
-          <ion-button slot="start"> <ion-label><h6 style="font-size: 10px">M-</h6></ion-label> </ion-button> 
+          <ion-button slot="start" (click)="subNamemoria()"> <ion-label><h6 style="font-size: 10px">M-</h6></ion-label> </ion-button> 
         </ion-item>  
       </ion-col>
       <ion-col size="2"> 
@@ -59,7 +59,7 @@
       <ion-col size="2"> 
         <ion-item lines="none">
 
-          <ion-button slot="start"> <ion-label> <h6 style="font-size: 10px">Mª</h6> </ion-label> </ion-button> 
+          <ion-button slot="start" (click)="openModal()"> <ion-label> <h6 style="font-size: 10px">Mª</h6> </ion-label> </ion-button> 
 
         </ion-item>
       </ion-col>

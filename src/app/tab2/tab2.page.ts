@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import { number } from 'mathjs';
 import { evaluate } from 'mathjs';
+import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { MemoriaModalPage } from '../utils/memoria-modal/memoria-modal.page';
+import { IMemoria } from '../models/IMemoria.models';
 
 @Component({
   selector: 'app-tab2',
@@ -13,14 +18,27 @@ export class Tab2Page {
   mat = '';
   ultimoverica = false;
   ultimo = false;
+  memoria: IMemoria[]=[];
 
-  constructor() {}
+  constructor(
+    private alertController: AlertController,
+    private modalCtrl: ModalController) {}
 
   ngOninit() {}
 
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: MemoriaModalPage,
+      componentProps: {
+        memoria : this.memoria,
+      },
+    });
+    modal.present();  
+  }
+
   realizaOperacao(){
     try{
-    this.operacao = evaluate(this.operacao);
+    this.resultado = evaluate(this.operacao);
     }catch(err){
       this.resultado = 'Inválido!';
     }
@@ -77,5 +95,41 @@ export class Tab2Page {
     }
   }
 
+  mostrarMemoria(){
+    const memoria: IMemoria = this.memoria[this.memoria.length -1];
+    this.operacao = memoria.operacao;
+    this.resultado = memoria.resultado.toString();
+    console.log('Mostrou: ', this.memoria)
+  }
+
+  limparMemoriaM(){
+    this.memoria = [];
+  }
+
+  somaNamemoria(){
+    if (this.operacao != ''){
+      this.realizaOperacao();
+      const memoria : IMemoria = this.memoria[this.memoria.length - 1];
+      const novamemoria : IMemoria = {
+          operacao: `${memoria.resultado} + ${this.resultado}`,
+          resultado: memoria.resultado + Number(this.resultado),
+
+      };
+      this.memoria.push(novamemoria);
+    }
+  }
+
+  subNamemoria(){
+    if (this.operacao != ''){
+      this.realizaOperacao();
+      const memoria : IMemoria = this.memoria[this.memoria.length - 1];
+      const novamemoria : IMemoria = {
+          operacao: `${memoria.resultado} - ${this.resultado}`,
+          resultado: memoria.resultado - Number(this.resultado),
+
+      };
+      this.memoria.push(novamemoria);
+    }
+  }
 
 }
